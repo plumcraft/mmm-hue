@@ -7,7 +7,7 @@
  * MIT Licensed.
  */
 
-Module.register("MMM-Hue", {
+Module.register("mmm-hue", {
 
     // Default module config.
     defaults: {
