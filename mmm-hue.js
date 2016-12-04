@@ -22,7 +22,7 @@ Module.register("mmm-hue", {
     },
     getStyles: function () {
 
-        return ["font-awesome.css", "MMM-Hue.css"];
+        return ["font-awesome.css", "mmm-hue.css"];
     },
     // Define start sequence.
     start: function () {
