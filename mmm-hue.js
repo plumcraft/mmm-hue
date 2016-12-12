@@ -27,7 +27,7 @@ Module.register("mmm-hue", {
     // Define start sequence.
     start: function () {
         //These will be moved to config in a later release
-        this.lightsorgroups = "groups";
+        this.lightsorgroups = "lights";
         this.updateInterval = 1 * 10000; // updates every 10 seconds
         this.animationSpeed = 2 * 1000;
         this.initialLoadDelay = 0;
