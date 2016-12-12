@@ -28,7 +28,7 @@ Module.register("mmm-hue", {
     start: function () {
         //These will be moved to config in a later release
         this.lightsorgroups = "groups";
-        this.updateInterval = 60 * 10000; // updates every 10 minutes
+        this.updateInterval = 1 * 10000; // updates every 10 seconds
         this.animationSpeed = 2 * 1000;
         this.initialLoadDelay = 0;
         //end
@@ -64,15 +64,13 @@ Module.register("mmm-hue", {
                 lightsallLabel.classList.add("centered");
 
                 var lightstatus = document.createElement("i");
-                lightstatus.classList.add("fa", this.result[lamps[i]].state.all_on ? "fa-lightbulb-o" : (this.result[lamps[i]].state.any_on ? "fa-adjust" : "fa-times"));
+                lightstatus.classList.add("fa", this.result[lamps[i]].state.on ? "fa-lightbulb-o" : (this.result[lamps[i]].state.bri < 90 ? "fa-adjust" : "fa-times"));
                 if (this.config.colour) {
-
-                    if (this.result[lamps[i]].state.all_on) {
-                        lightstatus.classList.add("lights-all-on")
-                    }
-                    else {
-                        if (this.result[lamps[i]].state.any_on) {
+                    if (this.result[lamps[i]].state.on) {
+                        if (this.result[lamps[i]].state.bri < 90) {
                             lightstatus.classList.add("lights-partial-on")
+                        } else {
+                            lightstatus.classList.add("lights-all-on")
                         }
                     }
                 }
@@ -89,7 +87,7 @@ Module.register("mmm-hue", {
         }
         return wrapper;
     },
-
+    
     createLabelRow: function () {
         
         var labelRow = document.createElement("tr");
